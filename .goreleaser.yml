@@ -1,0 +1,28 @@
+project_name: flux-patch
+release:
+  github:
+    owner: vetyy
+    name: kubectl-flux-patch
+builds:
+  - id: flux-patch
+    goos:
+    - linux
+    - windows
+    - darwin
+    goarch:
+    - amd64
+    - "386"
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+    main: cmd/plugin/main.go
+    ldflags: -s -w
+      -X github.com/vetyy/kubectl-flux-patch/pkg/version.version=
+archives:
+  - id: flux-patch
+    builds:
+    - flux-patch
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    format_overrides:
+    - goos: windows
+      format: zip

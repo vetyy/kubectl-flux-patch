@@ -1,0 +1,55 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: flux-patch
+spec:
+  version: "v0.1.0"
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    uri: https://github.com/vetyy/kubectl-flux-patch/releases/download/v0.1.0/flux-patch_linux_amd64.tar.gz
+    sha256: ""
+    files:
+    - from: "./flux-patch"
+      to: "."
+    - from: LICENSE
+      to: "."
+    bin: "flux-patch"
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    uri: https://github.com/vetyy/kubectl-flux-patch/releases/download/v0.1.0/flux-patch_darwin_amd64.tar.gz
+    sha256: ""
+    files:
+    - from: "./flux-patch"
+      to: "."
+    - from: LICENSE
+      to: "."
+    bin: "flux-patch"
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    uri: https://github.com/vetyy/kubectl-flux-patch/releases/download/v0.1.0/flux-patch_windows_amd64.zip
+    sha256: ""
+    files:
+    - from: "/flux-patch.exe"
+      to: "."
+    - from: LICENSE
+      to: "."
+    bin: "flux-patch.exe"
+  shortDescription: A new plugin
+  homepage: https://github.com/vetyy/kubectl-flux-patch
+  caveats: |
+    Usage:
+      $ kubectl flux-patch
+
+    For additional options:
+      $ kubectl flux-patch --help
+      or https://github.com/vetyy/kubectl-flux-patch/blob/v0.1.0/doc/USAGE.md
+
+  description: |
+    This is a new plugin
